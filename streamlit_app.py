@@ -26,6 +26,7 @@ def render_tabs():
         login_button = st.button("Login")
         if login_button:
             # Implement your authentication logic here
+            pass  # Placeholder for the authentication logic
 
     else:
         st.write(tabs[selected_tab])
