@@ -23,13 +23,28 @@ def render_tabs():
     else:
         st.write(tabs[selected_tab])
 
+# Custom CSS to display tabs horizontally
+custom_css = """
+<style>
+    .tabs {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1rem;
+    }
+</style>
+"""
+
 # Main app
 def main():
     st.set_page_config(layout="wide")
     st.title("My Streamlit Dashboard")
     
+    # Inject the custom CSS
+    st.markdown(custom_css, unsafe_allow_html=True)
+
     # Call the custom tab layout function
-    render_tabs()
+    with st.beta_container():
+        render_tabs()
 
 if __name__ == "__main__":
     main()
