@@ -1,4 +1,5 @@
 import streamlit as st
+from Create_Strategy import create_strategy_page  # Import the create_strategy_page function
 
 # Define your tabs and their content
 tabs = {
@@ -25,7 +26,7 @@ def render_tabs():
 
         # Handle the selected option
         if selected_option == "Create":
-            st.write("You selected 'Create'. Implement your 'Create' logic here.")
+            create_strategy_page()  # Call the "Create Strategy" page function from Create_Strategy.py
         elif selected_option == "Deployed":
             st.write("You selected 'Deployed'. Implement your 'Deployed' logic here.")
         elif selected_option == "My Strategies":
