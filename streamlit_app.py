@@ -50,8 +50,8 @@ def main():
     # Inject the custom CSS
     st.markdown(custom_css, unsafe_allow_html=True)
 
-    # Grid layout to display login on the right side
-    col1, col2 = st.beta_columns([2, 1])
+    # Columns layout to display login on the right side
+    col1, col2 = st.columns([2, 1])
     with col1:
         render_tabs()
     with col2:
