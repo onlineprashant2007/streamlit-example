@@ -1,5 +1,4 @@
 import streamlit as st
-import streamlit.components.v1 as components
 
 # Define your tabs and their content
 tabs = {
@@ -43,7 +42,7 @@ def main():
     st.markdown(custom_css, unsafe_allow_html=True)
 
     # Call the custom tab layout function
-    with st.beta_container():
+    with st.container():
         render_tabs()
 
 if __name__ == "__main__":
