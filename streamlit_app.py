@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 # Define your tabs and their content
 tabs = {
@@ -16,26 +17,15 @@ def render_tabs():
     selected_tab = st.sidebar.radio("", list(tabs.keys()))
 
     # Display the selected tab content
-    if selected_tab == "Strategies":
-        st.write(tabs[selected_tab])
-        st.write("## Strategies")
-
-        # Create the dropdown menu with options
-        selected_option = st.selectbox("Select an option:", ["Create", "Deployed", "My Strategies", "Marketplace", "BackTest"])
-
-        # Handle the selected option
-        if selected_option == "Create":
-            st.write("You selected 'Create'. Implement your 'Create' logic here.")
-        elif selected_option == "Deployed":
-            st.write("You selected 'Deployed'. Implement your 'Deployed' logic here.")
-        elif selected_option == "My Strategies":
-            st.write("You selected 'My Strategies'. Implement your 'My Strategies' logic here.")
-        elif selected_option == "Marketplace":
-            st.write("You selected 'Marketplace'. Implement your 'Marketplace' logic here.")
-        elif selected_option == "BackTest":
-            st.write("You selected 'BackTest'. Implement your 'BackTest' logic here.")
-        else:
-            st.write("Please select an option from the dropdown menu.")
+    if selected_tab == "Login":
+        st.title("Login")
+        # Add your login form or authentication logic here
+        # For example:
+        username = st.text_input("Username")
+        password = st.text_input("Password", type="password")
+        login_button = st.button("Login")
+        if login_button:
+            # Implement your authentication logic here
 
     else:
         st.write(tabs[selected_tab])
@@ -59,9 +49,12 @@ def main():
     # Inject the custom CSS
     st.markdown(custom_css, unsafe_allow_html=True)
 
-    # Call the custom tab layout function
-    with st.container():
+    # Grid layout to display login on the right side
+    col1, col2 = st.beta_columns([2, 1])
+    with col1:
         render_tabs()
+    with col2:
+        st.image("path/to/your/image.png", width=100)  # Replace with your logo or any other content
 
 if __name__ == "__main__":
     main()
