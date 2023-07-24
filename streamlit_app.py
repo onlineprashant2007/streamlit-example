@@ -1,5 +1,6 @@
+# app.py
 import streamlit as st
-from Create_Strategy import create_strategy_page  # Import the create_strategy_page function
+from Create_Strategy import create_strategy_page, SessionState  # Import the create_strategy_page function and SessionState class
 
 # Define your tabs and their content
 tabs = {
@@ -26,7 +27,8 @@ def render_tabs():
 
         # Handle the selected option
         if selected_option == "Create":
-            create_strategy_page()  # Call the "Create Strategy" page function from Create_Strategy.py
+            session_state = SessionState()  # Create a SessionState instance
+            create_strategy_page(session_state)  # Pass the SessionState instance to the "Create Strategy" page function
         elif selected_option == "Deployed":
             st.write("You selected 'Deployed'. Implement your 'Deployed' logic here.")
         elif selected_option == "My Strategies":
