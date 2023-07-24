@@ -49,6 +49,16 @@ def create_strategy_page(session_state):
         }
         session_state.saved_strategies.append(saved_strategy)
 
+    # Show saved strategies
+    if session_state.saved_strategies:
+        st.header("Saved Strategies")
+        for index, strategy in enumerate(session_state.saved_strategies):
+            st.subheader(f"Strategy {index + 1}")
+            st.write(f"**Strategy Name:** {strategy['Strategy Name']}")
+            st.write(f"**Tags:** {strategy['Tags']}")
+            st.write(f"**Description:** {strategy['Description']}")
+            st.write("---")
+
     # Initialize Variables section
     st.header("Initialize Variables")
 
@@ -62,15 +72,3 @@ def create_strategy_page(session_state):
         selected_set_no = int(set_no.split()[-1])
         option_menu = st.selectbox("Option Menu", ["Nifty 50", "BankNifty", "FinNifty"])
         description = st.text_area(f"Description for Set No{selected_set_no}", height=100)
-
-
-# Main app
-def main():
-    st.set_page_config(layout="wide")
-    st.title("My Streamlit Dashboard")
-
-    # Create Strategy Page
-    create_strategy_page()
-
-if __name__ == "__main__":
-    main()
