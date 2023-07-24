@@ -1,8 +1,5 @@
-import streamlit as st
-from streamlit import SessionState
-
 # Function to create the "Create Strategy" page
-def create_strategy_page(session_state):
+def create_strategy_page():
     st.title("Create Strategy")
 
     # Input for Strategy Name
@@ -35,23 +32,8 @@ def create_strategy_page(session_state):
 
     # Save strategy button
     if st.button("Save Strategy"):
-        # Save the strategy to the session state
-        if "saved_strategies" not in session_state:
-            session_state.saved_strategies = []
-        session_state.saved_strategies.append({
-            "strategy_name": strategy_name,
-            "tags": tags,
-            "description": description,
-        })
-
-    # Display saved strategies
-    if "saved_strategies" in session_state and len(session_state.saved_strategies) > 0:
-        st.header("My Strategies")
-        for i, strategy in enumerate(session_state.saved_strategies):
-            st.write(f"### Strategy {i + 1}")
-            st.write(f"**Strategy Name:** {strategy['strategy_name']}")
-            st.write(f"**Tags:** {strategy['tags']}")
-            st.write(f"**Description:** {strategy['description']}")
+        # Save the strategy logic goes here
+        pass  # Placeholder for the save strategy logic
 
     # Initialize Variables section
     st.header("Initialize Variables")
@@ -72,11 +54,8 @@ def main():
     st.set_page_config(layout="wide")
     st.title("My Streamlit Dashboard")
 
-    # Create or get the SessionState
-    session_state = SessionState.get(saved_strategies=[])
-
     # Create Strategy Page
-    create_strategy_page(session_state)
+    create_strategy_page()
 
 if __name__ == "__main__":
     main()
