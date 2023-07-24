@@ -1,6 +1,14 @@
+# Create_Strategy.py
 import streamlit as st
-# Function to create the "Create Strategy" page
-def create_strategy_page():
+
+class SessionState:
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
+
+def create_strategy_page(session_state):
+    if not hasattr(session_state, "saved_strategies"):
+        session_state.saved_strategies = []
+
     st.title("Create Strategy")
 
     # Input for Strategy Name
@@ -34,7 +42,12 @@ def create_strategy_page():
     # Save strategy button
     if st.button("Save Strategy"):
         # Save the strategy logic goes here
-        pass  # Placeholder for the save strategy logic
+        saved_strategy = {
+            "Strategy Name": strategy_name,
+            "Tags": tags,
+            "Description": description,
+        }
+        session_state.saved_strategies.append(saved_strategy)
 
     # Initialize Variables section
     st.header("Initialize Variables")
@@ -49,6 +62,7 @@ def create_strategy_page():
         selected_set_no = int(set_no.split()[-1])
         option_menu = st.selectbox("Option Menu", ["Nifty 50", "BankNifty", "FinNifty"])
         description = st.text_area(f"Description for Set No{selected_set_no}", height=100)
+
 
 # Main app
 def main():
