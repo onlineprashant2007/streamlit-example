@@ -1,6 +1,5 @@
 import streamlit as st
 from Create_Strategy import create_strategy_page  # Import the create_strategy_page function
-from services import services_page  # Import the services.py module
 
 # Define your tabs and their content
 tabs = {
@@ -38,9 +37,6 @@ def render_tabs():
             st.write("You selected 'BackTest'. Implement your 'BackTest' logic here.")
         else:
             st.write("Please select an option from the dropdown menu.")
-
-    elif selected_tab == "Services":
-        services.services_page()  # Call the "Services" page function from services.py
 
     else:
         st.write(tabs[selected_tab])
