@@ -1,3 +1,4 @@
+import streamlit as st
 # Function to create the "Create Strategy" page
 def create_strategy_page():
     st.title("Create Strategy")
