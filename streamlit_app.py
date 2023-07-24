@@ -1,6 +1,6 @@
 import streamlit as st
 from Create_Strategy import create_strategy_page  # Import the create_strategy_page function
-from Services import services_page  # Import the services.py module
+from services import services_page  # Import the services.py module
 
 # Define your tabs and their content
 tabs = {
